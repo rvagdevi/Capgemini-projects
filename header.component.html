@@ -1,0 +1,57 @@
+<app-page-loader [showLoader]="showLoader" *ngIf="showLoader"></app-page-loader>
+
+
+<nav class="navbar navbar-expand-lg fixed-top nav-height" *ngIf="!mobileViewFlag" [ngClass]="menuCollapseFlag?'fixed-left-shift':'fixed-normal'">
+
+    <div ><a id="logo-name" (click)="reloadHomePage();"><img src="./assets/images/enbridge.png" class="icon-ge"/></a></div>
+    <div class="ui-g-12 ui-md-9 ui-sm-9">
+
+        <div class="bread-menu">
+            <p-tabMenu [model]="items"></p-tabMenu>
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-1 ui-sm-1" (click)="op.toggle($event)"><i class="pi pi-question" style="font-size: 1.5em;color: #1cdbe7; border: 1px solid #1cdbe7; border-radius: 100%; "></i></div>
+    <div class="ui-g-12 ui-md-1 ui-sm-1" (click)="op.toggle($event)"> <i class="pi pi-user" style="font-size: 1.5em;color: #1cdbe7; border: 1px solid #1cdbe7; border-radius: 100%; "></i></div>
+    <div class="ui-g-12 ui-md-1 ui-sm-1" routerLink="/not-found" [routerLinkActive]="['router-link-active']"><i class="pi pi-sign-out" style="font-size: 1.5em;color: #1cdbe7; border: 1px solid #1cdbe7; border-radius: 100%; "></i></div>
+    <!-- <div class="collapse navbar-collapse ui-g-12 ui-md-3 ui-sm-3" *ngIf="flagValue">
+        <div class="row">
+            <a href="javascript:void(0)" class="nav-link wid120Per" (click)="op.toggle($event)">
+                <img src="{{profileUrl}}" class="avatar ellipsis" onerror="this.src='./assets/images/avatar.jpg'">
+            </a>
+
+            <a href="javascript:void(0)" class="und-none wid120Per" (click)="op.toggle($event)">
+                <div class="ellipsis caret" title="{{reqSSOName}}"><b>{{reqSSOName}}</b></div>
+                <br />
+                <div class="ellipsis caret-foot" title="{{reqSSOPosition}}">{{reqSSOPosition}}</div>
+            </a>
+        </div>
+    </div> -->
+
+    <p-overlayPanel #op id="profile-dd">
+        <a class="dropdown-item" routerLink="/home" [routerLinkActive]="['router-link-active']">
+            <i class="pi pi-spin pi-spinner"></i> Activity
+        </a>
+    </p-overlayPanel>
+</nav>
+
+<!--Mobile View-->
+
+<nav class="navbar navbar-expand-lg fixed-top nav-height" *ngIf="mobileViewFlag" [ngClass]="menuCollapseFlag?'fixed-left-shift':'fixed-normal'">
+
+        <div class="ui-g-12 ui-md-9 ui-sm-9">
+
+            <div class="bread-menu">
+                <p-tabMenu [model]="items" [activeItem]="items[0]"></p-tabMenu>
+            </div>
+        </div>
+    <div class="ui-g-12 ui-md-1 ui-sm-1"(click)="op.toggle($event)"><i class="pi pi-question" style="font-size: 1.5em;color: #1cdbe7; border: 1px solid #1cdbe7; border-radius: 100%; "></i></div>
+    <div class="ui-g-12 ui-md-1 ui-sm-1" (click)="op.toggle($event)"> <i class="pi pi-user" style="font-size: 1.5em;color: #1cdbe7; border: 1px solid #1cdbe7; border-radius: 100%; "></i></div>
+    <div class="ui-g-12 ui-md-1 ui-sm-1" routerLink="/not-found" [routerLinkActive]="['router-link-active']"><i class="pi pi-sign-out" style="font-size: 1.5em;color: #1cdbe7; border: 1px solid #1cdbe7; border-radius: 100%; "></i></div>
+    
+        <p-overlayPanel #op id="profile-dd">
+            <a class="dropdown-item" routerLink="/home" [routerLinkActive]="['router-link-active']">
+                <i class="pi pi-spin pi-spinner"></i> Activity
+            </a>
+        </p-overlayPanel>
+ 
+    </nav>
